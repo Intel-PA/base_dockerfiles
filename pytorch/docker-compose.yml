@@ -1,0 +1,17 @@
+version: '3.8'
+
+services: 
+    torch:
+        image: knoriy/pytorch-gpu
+        build: ./
+        container_name: pytorch-gpu
+        expose: 
+            - 8888
+        ports:
+            - 8888:8888
+        volumes:
+            - /home/kari/:/home
+            - /media/kari/DATA/Datasets/:/home/Datasets
+        environment:
+            - type=lab
+        
