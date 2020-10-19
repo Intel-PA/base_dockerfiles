@@ -1,25 +1,27 @@
-fire
-toml
-tqdm
-flask
-ffmpy
-bokeh
-modin
-pylint
-Pillow
-seaborn
-imageio
-pydicom
-graphviz
-dataclasses
-scikit-learn
-scikit-image
-opencv-python
-line_profiler
-nvidia-ml-py3
+# gym
 
-# Jupyter
-ipykernel
+# fire
+# toml
+# tqdm
+# flask
+# ffmpy
+# bokeh
+# modin
+# pylint
+# Pillow
+# seaborn
+# imageio
+# pydicom
+# graphviz
+# dataclasses
+# scikit-learn
+# scikit-image
+# opencv-python
+# line_profiler
+# nvidia-ml-py3
+
+# # Jupyter
+# ipykernel
 
 # git+https://github.com/conery/nbscan.git
 # ptvsd

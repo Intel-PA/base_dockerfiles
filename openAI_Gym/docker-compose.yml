@@ -1,16 +1,16 @@
 version: '3.8'
 
 services: 
-    tensorflow:
-        image: "knoriy/tensorflow-gpu"
+    OpenAIGym:
+        image: "knoriy/openai_gym"
         build: "./"
-        container_name: tensorflow-gpu
+        container_name: openai_gym
         # restart: always
         ports:
         - "5000:5000"
         - "8888:8888"
         volumes:
         - /home/$USER:/home/
-        # environment:
-        # - type=lab
+        environment:
+        - type=lab
         

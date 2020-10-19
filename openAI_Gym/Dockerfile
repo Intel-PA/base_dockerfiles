@@ -1,6 +1,6 @@
-FROM tensorflow/tensorflow:latest-gpu
+FROM pytorch/pytorch:1.5-cuda10.1-cudnn7-devel
 
-LABEL MAINTAINER="Kari Noriy, knoriy@bournemouth.ac.uk"
+LABEL MAINTAINER=" Kari Noriy knoriy@bournemouth.ac.uk"
 
 RUN apt-get update
 
@@ -11,8 +11,6 @@ RUN apt-get install -y  git \
 
 RUN apt-get install -y  python3 \
                         python3-pip
-
-RUN pip install --upgrade pip
 
 ## START - Jupyter notebook setup
 RUN pip3 install jupyter \ 
@@ -29,10 +27,14 @@ RUN jupyter nbextension enable  notify/notify
 RUN jupyter nbextension enable  python-markdown/main
 ## END - Jupyter notebook setup
 
-## START - Tensorflow specific packages
-RUN pip install tensorflow_hub
-RUN pip install tf-nightly
-## START - Tensorflow specific packages
+RUN apt-get install -y python-opengl
+
+
+# START - OpenAI Gym setup from source
+RUN pip install git+https://github.com/openai/gym
+# End - OpenAI Gym setup from source
+
+
 
 ## START - Python packages
 ADD requirements.txt .
@@ -41,9 +43,6 @@ RUN pip3 install -r requirements.txt
 
 WORKDIR /home
 
-EXPOSE 8888
-EXPOSE 5000
-
 ENV type lab
 
-CMD ["bash", "-c", "jupyter ${type} --ip 0.0.0.0 --no-browser --allow-root"]
+CMD ["bash","-c", "jupyter ${type} --ip 0.0.0.0 --no-browser --allow-root"]

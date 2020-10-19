@@ -1,10 +1,10 @@
 
 user 					= 1000:0
 ports 					= -p 8888:8888 -p 6006:6006
-volume_dir 				= /home/kari:/home
-dataset_dir 			= /media/kari/DATA2/Datasets/:/home/Datasets
-Docker_name				= knoriy/tensorflow-gpu
-container_name 			= tensorflow-gpu
+volume_dir 				= /home/karinoriy:/home
+dataset_dir 			= /media/karinoriy/DATA/Datasets/:/home/Datasets
+Docker_name				= knoriy/openai_gym
+container_name 			= openai_gym
 files_to_remove 		= __pycache__ .ipynb_checkpoints saved_images/ logs/
 other_files_to_remove 	= cache/ model/
 
@@ -24,8 +24,6 @@ bash:
 bashDisplay:
 	@docker run -it --rm --gpus=all $(ports) --net=host --env="DISPLAY" --rm -v /home/.Xauthority:/root/.Xauthority:rw -v $(volume_dir) -v $(dataset_dir) --name $(container_name) $(Docker_name) bash || docker exec -it $(container_name) bash
 
-predict:
-	@python predict.py -i ./content.jpg
 
 clean:
 	@rm -rf $(files_to_remove) || sudo rm -rf $(files_to_remove)
