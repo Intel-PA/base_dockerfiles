@@ -1,25 +1,30 @@
-# Remove all dangling images
-    <pre>
-    <code>docker rmi -f $(docker images -q --filter "dangling=true")</code>
-    </pre>
+# HOW TO RUN THE FOLLOWING CONTAINERS
 
-# Build dockerfile -
-    <pre>
-    <code>docker build --rm -t <-insert Image Name-> . </code>
-    </pre>
-# Start container with volume
-    <pre>
-    <code> docker run --gpus all,capabilities=utility -ti --name <-Container Name-> -p 8888:8888 --rm -v /home/$USER:/home/ -e type=<-lab or notebook-> <-insert Image Name-> </code>
-    </pre>
-# Enter existing container
-    <pre>
-    <code>docker stop <-Container Name->
-    docker start <-Container Name->
-    docker exec -it  myfirst bash</code>
-    </pre>
+This container was tested on `Pop!_OS 20.04`.
+Additinal changes may be required such as paths, please read the appropreate `README.md`.
 
-# start jupyter notebook
-    <pre>
-    <code>jupyter notebook --notebook-dir=../ --ip 0.0.0.0 --no-browser --allow-root
-    jupyter lab --ip 0.0.0.0 --no-browser --allow-root<code>
-    </pre>
+### Prerequisite
+
+[nvidia-container](https://github.com/NVIDIA/nvidia-docker) is needs to be installed to run on `gpu` (Nvidia gpu is required).
+
+For instruction on how to install `nvidia-container` please follow the offical quide [HERE](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
+
+
+## Build container
+```
+cd dockerfiles
+make
+```
+
+## Run container
+In the `Makefile` change `volume_dir` to your working directory.
+```
+cd dockerfiles
+make run
+```
+
+## Start container in bash
+```
+cd dockerfiles
+make bash
+```

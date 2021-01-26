@@ -1,6 +1,6 @@
-FROM pytorch/pytorch:1.5-cuda10.1-cudnn7-devel
+FROM pytorch/pytorch:1.7.0-cuda11.0-cudnn8-devel
 
-LABEL MAINTAINER=" Kari Noriy knoriy@bournemouth.ac.uk"
+LABEL MAINTAINER="Kari Noriy, knoriy@bournemouth.ac.uk"
 
 RUN apt-get update
 
@@ -11,6 +11,8 @@ RUN apt-get install -y  git \
 
 RUN apt-get install -y  python3 \
                         python3-pip
+
+RUN pip install --upgrade pip
 
 ## START - Jupyter notebook setup
 RUN pip3 install jupyter \ 
@@ -29,11 +31,11 @@ RUN jupyter nbextension enable  python-markdown/main
 
 RUN apt-get install -y python-opengl
 
-
 # START - OpenAI Gym setup from source
+RUN apt-get install -y libglu1-mesa-dev libgl1-mesa-dev libosmesa6-dev xvfb ffmpeg curl patchelf libglfw3 libglfw3-dev cmake zlib1g zlib1g-dev swig
+RUN xvfb-run -s "-screen 0 1400x900x24" bash
 RUN pip install git+https://github.com/openai/gym
 # End - OpenAI Gym setup from source
-
 
 
 ## START - Python packages

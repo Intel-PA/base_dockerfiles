@@ -1,28 +1,44 @@
-# Tensorflow GPU
+# Tensorflow
 
-This is an image build for Tensorflow with GPU and python 3.6.
+This container was tested on `Pop!_OS 20.04`.
+Additinal changes may be required such as paths, please read the appropreate `README.md`.
 
-On start, the container will start in jupyter notebook, but can be changed by simply changing the docker run enviroment variable 'type' to 'lab' start the images using jupyter lab.
+### Prerequisite
 
-## Remove all dangling images
+[nvidia-container](https://github.com/NVIDIA/nvidia-docker) is needs to be installed to run on `gpu` (Nvidia gpu is required).
 
-    docker rmi -f $(docker images -q --filter "dangling=true")
+For instruction on how to install `nvidia-container` please follow the offical quide [HERE](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
 
-## Build dockerfile
 
-    docker build --rm -t knoriy/tensorflow-gpu . 
+### Setup
+```
+git clone git@github.com:charisma-ai/wav2letter.git
+cd wav2letter
+git submodule init; git submodule update
 
-## Start container with volume
+mkdir myRecordedAudio # this step will be remove in the future
 
-     docker run --gpus all,capabilities=utility -ti --name <-Container Name-> -p 8888:8888 --rm -v /home/$USER:/home/ -e type=<-lab or notebook-> <-insert Image Name-> 
+# Download pretrained models
+cd dockerfiles
+chmod +x download_models.sh
+./download_models.sh
+```
 
-## Enter existing container
+## Build container
+```
+cd dockerfiles
+make
+```
 
-    docker stop <-Container Name->
-    docker start <-Container Name->
-    docker exec -it  myfirst bash
+## Run container
+In the `Makefile` change `volume_dir` to your working directory.
+```
+cd dockerfiles
+make run
+```
 
-## Start jupyter notebook
-
-    jupyter notebook --notebook-dir=../ --ip 0.0.0.0 --no-browser --allow-root
-    jupyter lab --ip 0.0.0.0 --no-browser --allow-root
+## Start container in bash
+```
+cd dockerfiles
+make bash
+```

@@ -25,7 +25,11 @@ RUN jupyter nbextension enable  codefolding/main
 RUN jupyter nbextension enable  code_prettify/code_prettify
 RUN jupyter nbextension enable  notify/notify
 RUN jupyter nbextension enable  python-markdown/main
+
+COPY themes.jupyterlab-settings /.jupyter/lab/user-settings/@jupyterlab/apputils-extension
 ## END - Jupyter notebook setup
+
+
 
 ## START - Python packages
 ADD requirements.txt .

@@ -1,10 +1,20 @@
 
+# set user
 user 					= 1000:0
-ports 					= -p 8888:8888 -p 6006:6006
-volume_dir 				= /home/karinoriy:/home
-dataset_dir 			= /media/karinoriy/DATA/Datasets/:/home/Datasets
+
+# docker image and container details
 Docker_name				= knoriy/openai_gym
 container_name 			= openai_gym
+
+# forwards ports
+ports 					= -p 8888:8888 -p 6006:6006
+
+# set volume directory
+
+volume_dir 				= /home/karinoriy/Documents/dockerfiles/openAI_Gym:/home
+dataset_dir 			= /media/karinoriy/DATA/Datasets/:/home/Datasets
+
+#Other
 files_to_remove 		= __pycache__ .ipynb_checkpoints saved_images/ logs/
 other_files_to_remove 	= cache/ model/
 

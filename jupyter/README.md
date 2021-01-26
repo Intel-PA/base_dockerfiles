@@ -1,4 +1,4 @@
-# Jupyter
+# Jupyter - NEEDS UPDATING TO MY CURRENT STANDARD
 
 This is an image build to run jupyter notebook or lab.
 
