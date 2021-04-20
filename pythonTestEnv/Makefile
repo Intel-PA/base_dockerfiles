@@ -16,8 +16,7 @@ usb						= /dev/bus/usb/:/dev/bus/usb/
 
 
 build:
-	# Build the image using the the
-	@docker-compose build
+	@docker build . -t $(Docker_name)
 
 run:
 	@docker run -it --rm --gpus=all $(ports) -v $(volume_dir) -v $(usb) --name $(container_name) $(Docker_name) bash || docker exec -it $(container_name) bash

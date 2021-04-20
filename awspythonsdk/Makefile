@@ -6,18 +6,15 @@ Docker_name				= knoriy/awspythonsdk
 container_name 			= awspythonsdk
 
 # forwards ports
-ports 					= -p 8888:8888 -p 6006:6006
+# ports 					= -p 8888:8888 -p 6006:6006
 
 # set volume directory
 volume_dir 				= $(shell pwd):/home
-dataset_dir 			= /media/karinoriy/DATA/:/Datasets
-aws_credentials			= /home/karinoriy/.aws/:/root/.aws/
-
-
+dataset_dir 			= /media/knoriy/DATA/:/Datasets
+aws_credentials			= /home/knoriy/.aws/:/root/.aws/
 
 build:
-	# Build the image using the the
-	@docker-compose build
+	@docker build . -t $(Docker_name)
 
 run:
 	@docker run -it --rm --gpus=all $(ports) -v $(volume_dir) -v $(dataset_dir) -v $(aws_credentials) --name $(container_name) $(Docker_name) bash || docker exec -it $(container_name) bash

@@ -1,24 +1,44 @@
-# Jupyter - NEEDS UPDATING TO MY CURRENT STANDARD
+# Default
 
-This is an image build to run jupyter notebook or lab.
+This container was tested on `Pop!_OS 20.04`.
+Additinal changes may be required such as paths, please read the appropreate `README.md`.
 
-On start, the container will start in jupyter notebook, but can be changed by simply changing the docker run enviroment variable 'type' to 'lab' start the images using jupyter lab.
+### Prerequisite
 
-## Build dockerfile
+[nvidia-container](https://github.com/NVIDIA/nvidia-docker) is needs to be installed to run on `gpu` (Nvidia gpu is required).
 
-    docker build --rm -t <-insert Image Name-> . 
+For instruction on how to install `nvidia-container` please follow the offical quide [HERE](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
 
-## Start container with volume
 
-     docker run --gpus all -ti --name <-Container Name-> -p 8888:8888 --rm -v /home/$USER:/home/ -e type=<-lab or notebook-> <-insert Image Name-> 
+### Setup
+```
+git clone git@github.com:charisma-ai/wav2letter.git
+cd wav2letter
+git submodule init; git submodule update
 
-## Enter existing container
+mkdir myRecordedAudio # this step will be remove in the future
 
-    docker stop <-Container Name->
-    docker start <-Container Name->
-    docker exec -it <-Container Name-> <-command-> 
+# Download pretrained models
+cd dockerfiles
+chmod +x download_models.sh
+./download_models.sh
+```
 
-## start jupyter notebook
+## Build container
+```
+cd dockerfiles
+make
+```
 
-    jupyter notebook --notebook-dir=../ --ip 0.0.0.0 --no-browser --allow-root
-    jupyter lab --ip 0.0.0.0 --no-browser --allow-root
+## Run container
+In the `Makefile` change `volume_dir` to your working directory.
+```
+cd dockerfiles
+make run
+```
+
+## Start container in bash
+```
+cd dockerfiles
+make bash
+```

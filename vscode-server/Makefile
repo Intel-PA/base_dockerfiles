@@ -15,8 +15,7 @@ dataset_dir 			= /media/karinoriy/DATA/Datasets/:/Datasets
 
 
 build:
-	# Build the image using the the
-	@docker-compose build
+	@docker build . -t $(Docker_name)
 
 run:
 	@docker run -it --rm --gpus=all $(ports) -v $(volume_dir) -v $(dataset_dir) -u "$(id -u):$(id -g)" --name $(container_name) $(Docker_name) || docker exec -it $(container_name) bash

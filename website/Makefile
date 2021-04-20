@@ -13,10 +13,8 @@ volume_dir 				= $(shell pwd):/home
 site	 				= $(shell pwd)/startbootstrap-new-age://usr/share/nginx/html
 
 
-
 build:
-	# Build the image using the the
-	@docker-compose build
+	@docker build . -t $(Docker_name)
 
 run:
 	@docker run -it --rm -d --gpus=all $(ports) -v $(site) --name $(container_name) $(Docker_name) || docker exec -it $(container_name) bash
