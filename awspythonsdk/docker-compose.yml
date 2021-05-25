@@ -1,7 +1,0 @@
-version: '3.8'
-
-services: 
-    default:
-        image: "knoriy/awspythonsdk"
-        build: "./"
-        container_name: awspythonsdk
