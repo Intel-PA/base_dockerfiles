@@ -3,7 +3,7 @@ user 			= 1000:0
 
 # docker image and container details
 Docker_name		= knoriy/pytorch
-container_name	= pytorh
+container_name	= pytorch
 
 # forwards ports
 ports 			= -p 8888:8888
