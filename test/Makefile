@@ -2,7 +2,7 @@
 user 					= 1000:0
 
 # docker image and container details
-Docker_name				= knoriy/test
+Docker_name				= $(shell whoami)/test
 container_name 			= test
 
 # forwards ports
@@ -10,7 +10,7 @@ ports 					= -p 8888:8888 -p 6006:6006
 
 # set volume directory
 volume_dir 				= $(shell pwd):/home
-dataset_dir 			= /media/knoriy/DATA/Datasets/:/Datasets
+dataset_dir 			= /media/$(shell whoami)/DATA/Datasets/:/Datasets
 
 
 

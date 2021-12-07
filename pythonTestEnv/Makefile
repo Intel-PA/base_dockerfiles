@@ -2,7 +2,7 @@
 user 					= 1000:0
 
 # docker image and container details
-Docker_name				= knoriy/pythontestenv
+Docker_name				= $(shell whoami)/pythontestenv
 container_name 			= pythontestenv
 
 # forwards ports

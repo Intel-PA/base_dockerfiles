@@ -2,7 +2,7 @@
 user 					= 1000:0
 
 # docker image and container details
-Docker_name				= knoriy/vscode-server
+Docker_name				= $(shell whoami)/vscode-server
 container_name 			= vscode-server
 
 # forwards ports
@@ -10,7 +10,7 @@ ports 					= -p 19875:8080
 
 # set volume directory
 volume_dir 				= $(shell pwd):/home/coder/project
-dataset_dir 			= /media/karinoriy/DATA/Datasets/:/Datasets
+dataset_dir 			= /media/$(shell pwd)/DATA/Datasets/:/Datasets
 
 
 

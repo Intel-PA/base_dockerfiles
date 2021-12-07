@@ -2,7 +2,7 @@
 user 					= 1000:0
 
 # docker image and container details
-# Docker_name				= knoriy/mincraftserver
+# Docker_name				= $(shell whoami)/mincraftserver
 Docker_name				= itzg/minecraft-server:java8
 container_name 			= minecraftserver
 

@@ -13,7 +13,7 @@ volume_dir 		= $(shell pwd):/home
 dataset_dir		= /media/knoriy/DATA/Datasets/:/Datasets
 
 build:
-	@docker build . -t $(Docker_name)
+	@docker build --no-cache . -t $(Docker_name)
 
 run:
 	@docker run -it --rm --gpus=all $(ports) -v $(volume_dir) -v $(dataset_dir) --name $(container_name) $(Docker_name)

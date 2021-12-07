@@ -2,7 +2,7 @@
 user 					= 1000:0
 
 # docker image and container details
-Docker_name				= knoriy/awspythonsdk
+Docker_name				= $(shell whoami)/awspythonsdk
 container_name 			= awspythonsdk
 
 # forwards ports
@@ -10,8 +10,8 @@ container_name 			= awspythonsdk
 
 # set volume directory
 volume_dir 				= $(shell pwd):/home
-dataset_dir 			= /media/knoriy/DATA/:/Datasets
-aws_credentials			= /home/knoriy/.aws/:/root/.aws/
+dataset_dir 			= /media/$(shell whoami)/DATA/:/Datasets
+aws_credentials			= /home/$(shell whoami)/.aws/:/root/.aws/
 
 build:
 	@docker build . -t $(Docker_name)

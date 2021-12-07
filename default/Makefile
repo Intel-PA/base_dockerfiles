@@ -2,15 +2,15 @@
 user 					= 1000:1000
 
 # docker image and container details
-Docker_name				= knoriy/default
+Docker_name				= $(shell whoami)/default
 container_name 			= default
 
 # forwards ports
 ports 					= -p 8888:8888 -p 6006:6006
 
 # set volume directory
-volume_dir 				= $(shell pwd):/home
-dataset_dir 			= /media/knoriy/DATA/Datasets/:/Datasets
+volume_dir 				= $(shell pwd):/home/docker
+dataset_dir 			= /media/$(shell whoami)/DATA/Datasets/:/Datasets
 
 
 
