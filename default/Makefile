@@ -17,5 +17,8 @@ dataset_dir 			= /media/$(shell whoami)/DATA/Datasets/:/Datasets
 build:
 	@docker build . -t $(Docker_name)
 
+no_cache:
+	@docker build . -t $(Docker_name) --no-cache
+
 bash:
 	@docker run -it --rm --gpus=all $(ports) -v $(volume_dir) -v $(dataset_dir) --name $(container_name) $(Docker_name) || docker exec -it $(container_name) bash
