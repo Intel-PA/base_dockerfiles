@@ -9,7 +9,7 @@ container_name 			= default
 ports 					= -p 8888:8888 -p 6006:6006
 
 # set volume directory
-volume_dir 				= $(shell pwd):/home/docker
+volume_dir 				= $(shell pwd):/home/docker/project
 dataset_dir 			= /media/$(shell whoami)/DATA/Datasets/:/Datasets
 
 

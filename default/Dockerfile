@@ -19,6 +19,6 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 
 USER docker
-WORKDIR /home/docker
+WORKDIR /home/docker/project
 
 CMD [ "bash" ]
