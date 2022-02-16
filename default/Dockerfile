@@ -4,8 +4,8 @@ RUN apt update
 
 ## START - Creating user
 RUN apt-get -y install sudo
-RUN adduser --disabled-password --gecos '' docker
-RUN adduser docker sudo
+RUN adduser --disabled-password --gecos '' user
+RUN adduser user sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 ## END - Creating user
 
@@ -18,7 +18,7 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 
 
-USER docker
-WORKDIR /home/docker/project
+USER user
+WORKDIR /workspace
 
 CMD [ "bash" ]

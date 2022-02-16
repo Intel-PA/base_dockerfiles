@@ -4,8 +4,8 @@ RUN apt update
 
 ## START - Creating user
 RUN apt-get -y install sudo
-RUN adduser --disabled-password --gecos '' docker
-RUN adduser docker sudo
+RUN adduser --disabled-password --gecos '' user
+RUN adduser user sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 ## END - Creating user
 
@@ -23,9 +23,9 @@ ADD requirements.txt .
 RUN pip3 install -r requirements.txt
 ## END - Python packages
 
-WORKDIR /home
-USER docker
+WORKDIR /workspace
+RUN chown user:user /workspace
+USER user
 
 ENV type lab
-
-CMD ["bash","-c", "jupyter ${type} --ip 0.0.0.0 --no-browser --allow-root"]
+CMD ["bash","-c", "jupyter ${type} --ip 0.0.0.0 --no-browser"]

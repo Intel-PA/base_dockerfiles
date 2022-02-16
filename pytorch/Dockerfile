@@ -1,8 +1,15 @@
 FROM pytorch/pytorch:1.7.0-cuda11.0-cudnn8-devel
 
-LABEL MAINTAINER=" Kari Noriy knoriy@bournemouth.ac.uk"
+LABEL MAINTAINER="Kari Noriy knoriy@bournemouth.ac.uk"
 
 RUN apt-get update
+
+## START - Creating user
+RUN apt-get -y install sudo
+RUN adduser --disabled-password --gecos '' user
+RUN adduser user sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+## END - Creating user
 
 RUN apt-get install -y  git \
                         openssh-server \
@@ -18,8 +25,10 @@ ADD requirements.txt .
 RUN pip install -r requirements.txt
 ## END - Python packages
 
-WORKDIR /home
+WORKDIR /workspace
+RUN chown user:user /workspace
+USER user
 
 ENV type notebook
 
-CMD ["bash","-c", "jupyter ${type} --ip 0.0.0.0 --no-browser --allow-root"]
+CMD ["bash","-c", "jupyter ${type} --ip 0.0.0.0 --no-browser"]
