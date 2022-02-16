@@ -12,8 +12,6 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 ## END - Creating user
 
 RUN apt-get install -y  git \
-                        openssh-server \
-                        vim \
                         tree
 
 ## START - Jupyter notebook setup
@@ -29,6 +27,6 @@ WORKDIR /workspace
 RUN chown user:user /workspace
 USER user
 
-ENV type notebook
+ENV type lab
 
 CMD ["bash","-c", "jupyter ${type} --ip 0.0.0.0 --no-browser"]
