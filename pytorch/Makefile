@@ -9,7 +9,7 @@ container_name	= pytorch
 ports 			= -p 8888:8888
 
 # set volume directory
-volume_dir 		= $(shell pwd):/home
+volume_dir 		= $(shell pwd):/workspace
 dataset_dir		= /media/knoriy/DATA/Datasets/:/Datasets
 
 build:
