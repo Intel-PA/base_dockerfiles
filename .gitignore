@@ -142,3 +142,5 @@ cython_debug/
 
 # other
 *.jupyterlab-workspace
+
+awspythonsdk/aws-python-sample
