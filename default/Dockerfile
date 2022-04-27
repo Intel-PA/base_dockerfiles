@@ -18,7 +18,8 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 
 
-USER user
 WORKDIR /workspace
+RUN chown user:user ../workspace/
+USER user
 
 CMD [ "bash" ]

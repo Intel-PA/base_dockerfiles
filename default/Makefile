@@ -6,10 +6,10 @@ Docker_name				= $(shell whoami)/default
 container_name 			= default
 
 # forwards ports
-ports 					= -p 8888:8888 -p 6006:6006
+ports 					= 
 
 # set volume directory
-volume_dir 				= $(shell pwd):/home/docker/project
+volume_dir 				= $(shell pwd):/workspace
 dataset_dir 			= /media/$(shell whoami)/DATA/Datasets/:/Datasets
 
 
