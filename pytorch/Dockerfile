@@ -12,7 +12,8 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 ## END - Creating user
 
 RUN apt-get install -y  git \
-                        tree
+                        tree \
+			nano
 
 ## START - Jupyter notebook setup
 RUN pip install jupyterlab

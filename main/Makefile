@@ -6,10 +6,10 @@ Docker_name		= knoriy/main
 container_name	= main
 
 # forwards ports
-ports 			= -p 8888:8888
+ports 			= #-p 8888:8888
 
 # set volume directory
-volume_dir 		= $(shell pwd):/workspace
+volume_dir 		= ~/Documents:/workspace
 dataset_dir		= /media/knoriy/DATA/Datasets/:/Datasets
 
 build:
