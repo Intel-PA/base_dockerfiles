@@ -2,7 +2,7 @@
 user 			= 1000:0
 
 # docker image and container details
-Docker_name		= knoriy/pytorch
+Docker_name		= $(shell whoami)/pytorch
 container_name	= pytorch
 
 # forwards ports
